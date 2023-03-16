@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+{{> head }}
+
+<body>
+    <div class="container">
+
+        <h1 class="mt-5 mb-5 text-center text-primary"><b>تسجيل الاشتراك</b></h1>
+
+        <div class="row mt-5">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="card">
+                    {{#if message}}
+                    <p class="alert alert-danger">{{message}}</p>
+                    {{/if }}
+                    <div class="card-header" style="text-align: center;">أدخل المعلومات المطلوبة</div>
+                    <div class="card-body">
+                        <form method="post" action="/auth/register">
+                            <div class="mb-3">
+                                <label for="full_name">الاسم العائلي والشخصي</label>
+                                <input type="text" name="full_name" id="full_name" class="form-control"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">البريد الالكتروني</label>
+                                <input type="email" name="email" id="email" class="form-control" autocomplete="off"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">كلمة السر</label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm_password">تأكيد كلمة السر</label>
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="mb-3" style="display: flex; justify-content: space-between;">
+                                <button type="submit" class="btn btn-primary">تأكيد</button>
+                                <a href="/" class="btn btn-primary">رجوع</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

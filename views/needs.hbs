@@ -34,12 +34,7 @@
         </div>
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">صفحة المصالح</h1>
-
-          <form method="post" action="/departement" class="d-flex">
-            <input class="form-control form-control-dark w200 rounded-0 border-0" style="width: 50vw" type="search"
-              placeholder="اكتب مصلحة ..." aria-label="Search" name="search">
-          </form>
+          <h1 class="h2">صفحة الاحتياجات</h1>
 
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
@@ -51,28 +46,20 @@
         </div>
 
         <div class="table-responsive" id="data">
-          {{#if message}}
-            <h2 style="color: #0D6EFD; text-align: center;">{{message}}</h2>
-          {{/if }}
-          <table class="table table-striped table-sm" style="text-align: center; table-layout: fixed; width: 100%"
-            id="tableExport">
+          <table class="table table-striped table-sm" style="text-align: center;" id="tableExport">
             <thead>
               <tr class="bg-dark shadow" style="color:white">
-                <th scope="col">المستخدم</th>
-                <th scope="col">العتاد المعلوماتي</th>
-                <th scope="col">خصائص العتاد المعلوماتي</th>
-                <th scope="col">عنوان IP</th>
                 <th scope="col">الاحتياجات</th>
+                <th scope="col">المصلحة</th>
+                <th scope="col">المستخدم</th>
               </tr>
             </thead>
             <tbody>
               {{#each rows}}
               <tr>
-                <td>{{this.user}}</td>
-                <td>{{this.materiel}}</td>
-                <td>{{this.desc_materiel}}</td>
-                <td>{{this.address_ip}}</td>
                 <td>{{this.needs}}</td>
+                <td>{{this.departement}}</td>
+                <td>{{this.user}}</td>
               </tr>
               {{/each}}
             </tbody>
@@ -94,7 +81,6 @@
       var table2excel = new Table2Excel();
       table2excel.export(document.querySelectorAll("#tableExport"));
     });
-
   </script>
 
 </body>

@@ -26,6 +26,7 @@ hbs.registerPartials(partialsPath);
 // routes
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
+app.use('/', require('./routes/data'));
 
 // errors: page not found 404;
 app.use((req, res, next) => {

@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-{{> head }}
+{{> header }}
 
-<body>
+<body id="body">
 
-    {{> header }}
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/home" novalidate>إدارة العتاد المعلوماتي</a>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/logout">تسجيل الخروج</a>
+            </div>
+        </div>
+    </header>
 
     <div class="container-fluid">
         <div class="row">
@@ -27,41 +34,39 @@
 
 
                 <div class="card" style="margin-top: 70px;">
-                    <div class="alert alert-danger" role="alert" id="error" style="display: none; text-align: center">
-                    </div>
-                    <div class="alert alert-success" role="alert" id="success"
-                        style="display: none; text-align: center;"></div>
+                    {{#if message}}
+                    <p class="alert alert-success">{{message}}</p>
+                    {{/if}}
                     <div class="card-header" style="text-align: center;">أدخل المعلومات المطلوبة</div>
                     <div class="card-body">
-                        <form onsubmit="return false;" id="form">
+                        {{#each rows }}
+                        <form method="post" action="/settings/{{this.id}}">
                             <div class="mb-3">
                                 <label for="full_name">الاسم العائلي والشخصي</label>
                                 <input type="text" name="full_name" id="full_name" class="form-control"
-                                    value={{user.full_name}} />
+                                    value="{{this.full_name}}" />
                             </div>
                             <div class="mb-3">
                                 <label for="email">البريد الالكتروني</label>
-                                <input type="email" name="email" id="email" class="form-control" value={{user.email}} />
+                                <input type="email" name="email" id="email" class="form-control"
+                                    value="{{this.email}}" />
                             </div>
                             <div class="mb-3">
                                 <label for="password">كلمة السر الجديدة</label>
                                 <input type="password" name="password" id="password" class="form-control"
-                                    value={{user.password}} />
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirm-password">تأكيد كلمة السر</label>
-                                <input type="password" name="confirm-password" id="confirm-password"
-                                    class="form-control" value={{user.password}} />
+                                    value="{{this.password}}" />
                             </div>
                             <div class="mb-3" style="display: flex; justify-content: space-between;">
                                 <button type="submit" class="btn btn-primary">تأكيد</button>
                             </div>
                         </form>
+                        {{/each}}
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
 </body>
 
 </html>

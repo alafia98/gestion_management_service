@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-{{> head }}
+{{> header }}
 
 <body id="body">
-
-  {{> header }}
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/home" novalidate>إدارة العتاد المعلوماتي</a>
+        <form method="post" action="/home" class="d-flex">
+            <input class="form-control form-control-dark w200 rounded-0 border-0" style="width: 50vw" type="search"
+                placeholder="ابحث هنا ..." aria-label="Search" name="search">
+            <button style="background-color: transparent; color: white;" type="submit">بحث</button>
+        </form>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/logout">تسجيل الخروج</a>
+            </div>
+        </div>
+    </header>
 
   <div class="container-fluid">
     <div class="row">
@@ -77,17 +88,17 @@
         </div>
 -->
         <div class="table-responsive" id="data">
-          <table class=" table table-striped table-sm" style="text-align: center;" id="tableExport">
+          <table class=" table table-striped table-sm" style="text-align: center; table-layout: fixed; width: 100%" id="tableExport">
             <thead>
               <tr class="bg-dark shadow" style="color:white">
                 <!--<th scope="col">#</th>-->
-                <th scope="col">المصلحة</th>
-                <th scope="col">المستخدم</th>
-                <th scope="col">العتاد المعلوماتي</th>
-                <th scope="col">خصائص العتاد المعلوماتي</th>
-                <th scope="col">عنوان IP</th>
-                <th scope="col">الاحتياجات</th>
-                <th scope="col">Action</th>
+                <th scope="col" style="width:13%">المصلحة</th>
+                <th scope="col" style="width:13%">المستخدم</th>
+                <th scope="col" style="width:13%">العتاد المعلوماتي</th>
+                <th scope="col" style="width:17%">خصائص العتاد المعلوماتي</th>
+                <th scope="col" style="width:13%">عنوان IP</th>
+                <th scope="col" style="width:17%">الاحتياجات</th>
+                <th scope="col" style="width:13%">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -127,19 +138,19 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    function printPage() {
-      var body = document.getElementById('body').innerHTML;
-      var data = document.getElementById('data').innerHTML;
-      document.getElementById('body').innerHTML = data;
-      window.print();
-    };
+<script type="text/javascript">
+  function printPage() {
+    var body = document.getElementById('body').innerHTML;
+    var data = document.getElementById('data').innerHTML;
+    document.getElementById('body').innerHTML = data;
+    window.print();
+  };
 
-    document.getElementById('downloadExcel').addEventListener('click', function () {
-      var table2excel = new Table2Excel();
-      table2excel.export(document.querySelectorAll("#tableExport"));
-    });
-  </script>
+  document.getElementById('downloadExcel').addEventListener('click', function() {
+    var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#tableExport"));
+  });
+</script>
+
 </body>
-
 </html>

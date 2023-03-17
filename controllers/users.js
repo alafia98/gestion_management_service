@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const db = require('../db-config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-//const {promisify} = require('util');
 
 exports.login = (req, res) => {
     try {
@@ -33,7 +32,6 @@ exports.login = (req, res) => {
     }
 };
 
-
 exports.register = (req, res) => {
     const {full_name, email, password, confirm_password} = req.body;
     db.query('SELECT email FROM users WHERE email=?', [email], async (error, result) => {
@@ -56,36 +54,12 @@ exports.register = (req, res) => {
         });
     })
 };
-/*
-exports.isLoggedIn = async (req, res, next) => {
-    if(req.cookies.joes) {
-        try {
-            const decode = await promisify(jwt.verify)(
-                req.cookies.joes,
-                process.env.JWT_SECRET
-            );
-            db.query('SELECT * FROM users WHERE id=?', [decode.id], (err, results) => {
-                if(!results) {
-                    return next();
-                }
-                req.user = results[0];
-                return next();
-            });
-        } catch (error) {
-            console.log(error);
-            return next();
-        }
-    } else {
+
+exports.forgotPassword = async (req, res) => {
+    const {email} = req.body;
+    try {
+        const oldUser = await user
+    } catch (error) {
         
     }
 };
-
-
-exports.logout = async (req, res) => {
-    res.cookie('joes', 'logout', {
-        expiresIn: new Date(Date.now() + 2 * 1000),
-        httpOnly: true
-    });
-    res.status(200).redirect('/');
-};
-*/

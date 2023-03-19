@@ -1,34 +1,25 @@
-const mysql = require('mysql');
-const bcrypt = require('bcryptjs');
-
-const pool = mysql.createPool({
-    connectionLimit: 100,
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-});
+const db = require('../db-config');
 
 exports.view = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID' + connection.threadId);
 
         connection.query('SELECT * FROM data', (err, rows) => {
             connection.release();
             if(err) confirm.log(err);
-            else res.render('home', { rows });
+            else res.render('home', { rows, session: req.session });
         });
     })
 };
 
 exports.search = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
-        let searchTerm = req.body.search;
-        connection.query('SELECT * FROM data WHERE departement LIKE ?', ['%' + searchTerm + '%'], (err, rows) => {
+        let filter = req.body.filter;
+        connection.query('SELECT * FROM data WHERE departement LIKE ?', [filter], (err, rows) => {
             connection.release();
             if(err) confirm.log(err);
             else res.render('home', { rows });
@@ -37,7 +28,7 @@ exports.search = (req, res) => {
 };
 
 exports.addDepartement = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -51,7 +42,7 @@ exports.addDepartement = (req, res) => {
 };
 
 exports.editDepartement = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -65,7 +56,7 @@ exports.editDepartement = (req, res) => {
 };
 
 exports.updateDepartement = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -74,7 +65,7 @@ exports.updateDepartement = (req, res) => {
         connection.query('UPDATE data SET departement=?, user=?, materiel=?, desc_materiel=?, address_ip=?, needs=? WHERE id=?', [departement, user, materiel, desc_materiel, address_ip, needs, id], (err, rows) => {
             connection.release();
             if (!err) { 
-                pool.getConnection((err, connection) => {
+                db.getConnection((err, connection) => {
                     if(err) throw err;
                     
                     let id = req.params.id;
@@ -90,7 +81,7 @@ exports.updateDepartement = (req, res) => {
 };
 
 exports.deleteDepartement = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -104,7 +95,7 @@ exports.deleteDepartement = (req, res) => {
 };
 
 exports.departement = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -117,7 +108,7 @@ exports.departement = (req, res) => {
 };
 
 exports.searchDep = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -131,7 +122,7 @@ exports.searchDep = (req, res) => {
 };
 
 exports.user = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -144,7 +135,7 @@ exports.user = (req, res) => {
 };
 
 exports.searchUser = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
@@ -158,7 +149,7 @@ exports.searchUser = (req, res) => {
 };
 
 exports.needs = (req, res) => {
-    pool.getConnection((err, connection) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
         
@@ -170,46 +161,43 @@ exports.needs = (req, res) => {
     })
 };
 
-exports.editAdmin = (req, res) => {
-    pool.getConnection((err, connection) => {
+/*
+exports.editLoad = async(req, res) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
-
+        
         const id = req.params.id;
-        connection.query('SELECT * FROM users WHERE id=?', [id], (err, rows) => {
+        connection.query('SELECT * FROM users WHERE id=?', [id], async (err, rows) => {
             connection.release();
             if(err) confirm.log(err);
             else res.render('settings', { rows });
         });
-    });
+    })
 };
 
-exports.updateAdmin = (req, res) => {
-    pool.getConnection((err, connection) => {
+exports.updateProfile = async (req, res) => {
+    db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
 
-        const {full_name, email, password} = req.body;
-        connection.query('SELECT * FROM users', async (err, rows) => {
-            let id = req.params.id;
-            let hashedPassword = await bcrypt.hash(password, 8);
-            connection.query('UPDATE users SET full_name=?, email=?, password=? WHERE id=?', [full_name, email, hashedPassword, id], (err, rows) => {
-                connection.release();
-                if (!err) { 
-                    pool.getConnection((err, connection) => {
-                        if(err) throw err;
-                        
-                        let id = req.params.id;
-                        connection.query('SELECT * FROM users WHERE id=?', [id], (err, rows) => {
-                            connection.release();
-                            if(err) confirm.log(err);
-                            else {
-                                res.render('settings', {rows, message: 'تم التعديل' });
-                            };
-                        })
-                    });
-                };
-            });
-        })
+        const { full_name, email, password } = req.body;
+        let id = req.params.id;
+        connection.query('UPDATE users SET full_name=?, email=?, password=? WHERE id=?', [full_name, email, password, id], (err, rows) => {
+            connection.release();
+            if (!err) { 
+                db.getConnection((err, connection) => {
+                    if(err) throw err;
+
+                    let id = req.params.id;
+                    connection.query('SELECT * FROM users WHERE id=?', [id], (err, rows) => {
+                        connection.release();
+                        if(err) confirm.log(err);
+                        else res.render('settings', {rows, message: 'تم التعديل' });
+                    })
+                });
+            };
+        });
     });
 };
+*/

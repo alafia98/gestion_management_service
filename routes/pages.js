@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/users');
 
 router.get(['/', '/login'], (req, res, next) => {
     res.render('login');
@@ -19,13 +18,8 @@ router.get('/addDepartement', (req, res, next) => {
     res.render('addDepartement');
 });
 
-
-router.get('/settings', (req, res, next) => {
-    res.render('settings');
-});
-
-router.get('/forgotPassword', (req, res) => {
-    res.render('forgotPassword')
+router.get('/forgetPassword', (req, res) => {
+    res.render('forgetPassword')
 });
 
 module.exports = router;

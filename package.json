@@ -17,11 +17,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-flash": "^0.0.2",
     "express-handlebars": "^7.0.2",
+    "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.0",
-    "mysql": "^2.18.1",
-    "util": "^0.12.5"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"

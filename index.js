@@ -1,12 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const port = process.env.PORT || 3000;
-const db = require('./db-config');
-const path = require('path');
 const app = express();
+const port = process.env.PORT || 3000;
+const path = require('path');
 const hbs = require('hbs');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 // for body parser: to collect data that sent from the client
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
@@ -25,7 +25,7 @@ hbs.registerPartials(partialsPath);
 
 // routes
 app.use('/', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'));
+app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/data'));
 
 // errors: page not found 404;

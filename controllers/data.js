@@ -154,7 +154,7 @@ exports.needs = (req, res) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
         
-        connection.query('SELECT * FROM data ORDER BY needs', (err, rows, next) => {
+        connection.query('SELECT * FROM data ORDER BY needs DESC', (err, rows) => {
             connection.release();
             if(err) confirm.log(err);
             else if(rows.needs !== null || rows.needs !== '') res.render('needs', { rows });
@@ -189,4 +189,4 @@ exports.settings = (req, res) => {
             });                
         });
     })
-}
+};

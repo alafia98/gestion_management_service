@@ -1,11 +1,12 @@
 const db = require('../db-config');
+const bcrypt = require('bcryptjs')
 
 exports.view = (req, res) => {
     db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID' + connection.threadId);
 
-        connection.query('SELECT * FROM data', (err, rows) => {
+        connection.query('SELECT * FROM data ORDER BY created_at DESC', (err, rows) => {
             connection.release();
             if(err) confirm.log(err);
             else res.render('home', { rows, session: req.session });
@@ -153,51 +154,39 @@ exports.needs = (req, res) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
         
-        connection.query('SELECT * FROM data', (err, rows) => {
+        connection.query('SELECT * FROM data ORDER BY needs', (err, rows, next) => {
             connection.release();
             if(err) confirm.log(err);
-            else res.render('needs', { rows });
+            else if(rows.needs !== null || rows.needs !== '') res.render('needs', { rows });
         });
     })
 };
 
-/*
-exports.editLoad = async(req, res) => {
+exports.settings = (req, res) => {
     db.getConnection((err, connection) => {
         if (err) throw err;
         else console.log('Connected as ID ' + connection.threadId);
         
-        const id = req.params.id;
-        connection.query('SELECT * FROM users WHERE id=?', [id], async (err, rows) => {
+        const {full_name, email, password, confirm_password } = req.body;
+        connection.query('SELECT email FROM users WHERE email=?', [email], async (error, result) => {
             connection.release();
-            if(err) confirm.log(err);
-            else res.render('settings', { rows });
+
+            if(error) confirm.log(error);
+            else if (result.length > 0) {
+                return res.render('settings', { error: 'البريد الالكتروني موجود بالفعل' })
+            } else if (password !== confirm_password) {
+                return res.render('settings', { error: 'كلمات المرور غير متطابقة' })
+            }
+
+            let hashedPassword = await bcrypt.hash(password, 8);
+            connection.query('INSERT INTO users SET ?', { full_name: full_name, email: email, password: hashedPassword }, (error, result) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(result);
+                    return res.render('settings', { success: 'تمت الإضافة' });
+                }
+            });                
         });
     })
-};
-
-exports.updateProfile = async (req, res) => {
-    db.getConnection((err, connection) => {
-        if (err) throw err;
-        else console.log('Connected as ID ' + connection.threadId);
-
-        const { full_name, email, password } = req.body;
-        let id = req.params.id;
-        connection.query('UPDATE users SET full_name=?, email=?, password=? WHERE id=?', [full_name, email, password, id], (err, rows) => {
-            connection.release();
-            if (!err) { 
-                db.getConnection((err, connection) => {
-                    if(err) throw err;
-
-                    let id = req.params.id;
-                    connection.query('SELECT * FROM users WHERE id=?', [id], (err, rows) => {
-                        connection.release();
-                        if(err) confirm.log(err);
-                        else res.render('settings', {rows, message: 'تم التعديل' });
-                    })
-                });
-            };
-        });
-    });
-};
-*/
+}

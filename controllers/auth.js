@@ -1,4 +1,3 @@
-const mysql = require('mysql');
 const db = require('../db-config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -69,9 +68,9 @@ exports.forgetPassword = (req, res) => {
             let hashedPassword = await bcrypt.hash(password, 8);
             db.query('UPDATE users SET password=? WHERE email=?', [hashedPassword, email], (error, result) => {
                 if (!error) {
-                    db.getConnection((err, db) => {
+                    db.getConnection((err, connection) => {
                         if (err) throw err;
-                        db.query('SELECT * FROM users WHERE email=?', [email], (err, result) => {
+                        connection.query('SELECT * FROM users WHERE email=?', [email], (err, result) => {
                             if (err) confirm.log(err);
                             else res.redirect('login');
                         })

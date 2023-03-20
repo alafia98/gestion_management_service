@@ -21,10 +21,9 @@ router.post('/user', dataController.searchUser);
 
 router.get('/needs', dataController.needs);
 
-/*
-router.get('/settings/:id', dataController.editLoad);
-router.post('/settings/:id', dataController.updateProfile);
-*/
+
+router.post('/settings', dataController.settings);
+
 
 
 module.exports = router;

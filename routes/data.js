@@ -20,9 +20,11 @@ router.get('/user', dataController.user);
 router.post('/user', dataController.searchUser);
 
 router.get('/needs', dataController.needs);
-
+/*
 router.post('/settings', dataController.settings);
+router.get('/filter', dataController.dep);
+router.get('/filter', dataController.mtr);
 
-
-
+router.post('/pagination', dataController.pagination);
+*/
 module.exports = router;

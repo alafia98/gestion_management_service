@@ -25,5 +25,4 @@ router.get('/forgetPassword', (req, res) => {
 router.get('/settings', (req, res, next) => {
     res.render('settings');
 });
-
 module.exports = router;

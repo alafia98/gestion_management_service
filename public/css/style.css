@@ -7,7 +7,7 @@
     font-family: Raleway, sans-serif;
 }
 
-body {
+.body {
     background: linear-gradient(90deg, #c7c5f4, #776bcc);
 }
 
@@ -87,7 +87,7 @@ body {
 .login {
     width: 320px;
     padding: 30px;
-    padding-top: 110px;
+    padding-top: 80px;
 }
 
 .login__field {
@@ -122,14 +122,15 @@ body {
 .login__submit {
     background: #fff;
     font-size: 14px;
-    margin-top: 30px;
-    padding: 16px 20px;
+    margin-top: 15px;
+    padding: 10px 20px;
     border-radius: 26px;
     border: 1px solid #d4d3e8;
     text-transform: uppercase;
     font-weight: 700;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     color: #4c489d;
     box-shadow: 0px 2px 2px #5c5696;
@@ -149,4 +150,74 @@ body {
     font-size: 24px;
     margin-right: auto;
     color: #7875b5;
+}
+
+/* Home */
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #4c489d;
+    padding: 10px;
+}
+
+.header .navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.nav_link {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -15px;
+    width: 80%;
+}
+
+.navlink {
+    width: 130px;
+}
+
+.nav-item {
+    margin-top: 0px;
+}
+
+.icon {
+    margin-left: 5px
+}
+
+.table {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: #4c489d;
+    color: white;
+}
+
+.main {
+    padding: 30px;
+}
+
+.main .card-body {
+    padding: 30px;
+}
+
+.main .card-body .row label, .main .card-body .row label {
+    font-size: 20px;
+
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button .navlink {
+    font-size: 20px;;
+}
+
+.row nav {
+    background-color: #d3d2ef;
 }

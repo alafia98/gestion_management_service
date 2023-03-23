@@ -162,6 +162,7 @@ exports.needs = (req, res) => {
     })
 };
 
+/*
 exports.settings = (req, res) => {
     db.getConnection((err, connection) => {
         if (err) throw err;
@@ -190,3 +191,27 @@ exports.settings = (req, res) => {
         });
     })
 };
+*/
+
+/*
+exports.pagination = async (req, res) => {
+    let body = req.body;
+    let params = [body.pageIndex, body.pageSize];
+    let callSP = 'SET @P_PageSize = ?; SET @P_PageIndex = ?;' + 'CALL Get_Pagination(@P_PageSize, @P_PageIndex)';
+
+    db.getConnection((err, connection) => {
+        if (err) throw err;
+        else console.log('Connected as ID ' + connection.threadId);
+        
+        connection.query(callSP, params, (err, result) => {
+            connection.release();
+            if(err) confirm.log(err);
+            else if(result.length > params.length) {
+                let empData = result[params.length];
+                let paginationData = result[params.length + 1];
+                res.send({status: 200, message: 'success', employeeData: empData, pagination: paginationData})
+            }
+        });
+    })
+}
+*/

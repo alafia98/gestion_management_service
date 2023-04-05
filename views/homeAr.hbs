@@ -11,13 +11,14 @@
   <title>Management System</title>
 </head>
 
+
 <body id="body">
 
   <header id="sidebarMenu" class="header">
-    <a class="navbar-brand" href="/home" novalidate>إدارة العتاد المعلوماتي</a>
+    <a class="navbar-brand" href="/homeAr" novalidate>إدارة العتاد المعلوماتي</a>
     <ul class="nav nav_link">
       <li class="nav-item">
-        <a class="login__submit navlink" aria-current="page" href="/home">
+        <a class="login__submit navlink" aria-current="page" href="/homeAr">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
             class="bi bi-house-door icon" viewBox="0 0 16 16">
             <path
@@ -27,7 +28,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="login__submit navlink" aria-current="page" href="/departement">
+        <a class="login__submit navlink" aria-current="page" href="/serviceAr">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-menu-app icon"
             viewBox="0 0 16 16">
             <path
@@ -37,7 +38,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="login__submit navlink" aria-current="page" href="/user">
+        <a class="login__submit navlink" aria-current="page" href="/userAr">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people icon"
             viewBox="0 0 16 16">
             <path
@@ -47,7 +48,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="login__submit navlink" href="/needs">
+        <a class="login__submit navlink" href="/needsAr">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4 icon"
             viewBox="0 0 16 16">
             <path
@@ -56,9 +57,8 @@
           الاحتياجات
         </a>
       </li>
-      <!--
       <li class="nav-item">
-        <a class="login__submit navlink" href="/settings">
+        <a class="login__submit navlink" href="/settingsAr">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear icon"
             viewBox="0 0 16 16">
             <path
@@ -69,11 +69,12 @@
           الإعدادات
         </a>
       </li>
-      -->
     </ul>
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="/" style="color: white;">تسجيل الخروج</a>
+        <a class="nav-link px-3" href="/home" style="color: white;">
+          <h5>Fr</h5>
+        </a>
       </div>
     </div>
   </header>
@@ -81,18 +82,36 @@
   <div class="container-fluid">
     <div class="row">
 
-      <nav id="sidebarMenu" class="col-lg-2">
+      <nav id="sidebarMenu" class="col-lg-2 ">
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column" style="height: 70vh; justify-content: space-evenly">
             <li class="nav-item">
-              <h3 style="color: #4c489d; text-align: center;">صفحة المصالح</h3>
+              <h3 style="color: #4c489d; text-align: center;">الصفحة الرئيسية</h3>
             </li>
             <li class="nav-item">
-              <form method="post" action="/departement" class="login__submit">
-                <input class="form-control form-control-dark w200 rounded-0 border-0" type="search"
-                  placeholder="اكتب اسم مصلحة" aria-label="search" name="search">
-              </form>
+              <a class="login__submit" aria-current="page" href="/addServiceAr">
+                <h5>
+                  أضف مصلحة
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+                  </svg>
+                </h5>
+              </a>
             </li>
+            <!--
+            <li class="nav-item">
+              <a class="login__submit" aria-current="page" href="/filter">
+                <h5>
+                  فلترة
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-funnel-fill icon" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                  </svg>
+                </h5>
+              </a>
+            </li>
+            -->
             <li class="nav-item">
               <button type="button" class="login__submit" onclick="printPage()">
                 <h5>طباعة
@@ -107,8 +126,7 @@
               </button>
             </li>
             <li class="nav-item">
-              <button type="button" class="login__submit" id="downloadExcel"
-                onclick="fnExportToExcel('xlsx', 'myfirstsheet')">
+              <button type="button" class="login__submit" id="downloadExcel" onclick="tableToExcel()">
                 <h5>
                   اكسيل
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -119,43 +137,84 @@
                 </h5>
               </button>
             </li>
+            <li class="nav-item">
+              <a class="login__submit" aria-current="page" href="/logout"><h5>تسجيل الخروج</h5></a>
+            </li>
           </ul>
         </div>
       </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="table-responsive" id="data">
-          {{#if message}}
-          <h2 style="color: #4c489d; text-align: center; margin-top: 15px;">{{message}}</h2>
-          {{/if }}
           <table class=" table table-striped table-sm" id="tableExport">
             <thead>
               <tr class="shadow">
+                <th scope="col">المصلحة</th>
                 <th scope="col">المستخدم</th>
                 <th scope="col">العتاد المعلوماتي</th>
                 <th scope="col">خصائص العتاد المعلوماتي</th>
                 <th scope="col">عنوان IP</th>
                 <th scope="col">الاحتياجات</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               {{#each rows}}
               <tr>
+                <td>{{this.departement}}</td>
                 <td>{{this.user}}</td>
                 <td>{{this.materiel}}</td>
                 <td>{{this.desc_materiel}}</td>
                 <td>{{this.address_ip}}</td>
                 <td>{{this.needs}}</td>
+                <td>
+                  <a href="/editServiceAr/{{this.id}}" class="btn btn-primary btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-pencil-square" viewBox="0 0 16 16" style="margin-bottom: 2px;">
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                  </a>
+                  <a onclick="return confirm('هل أنت متأكد من الحذف؟')" href="/deleteService/{{this.id}}"
+                    class="btn btn-danger btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-bottom: 2px;"
+                      fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                    </svg>
+                  </a>
+                </td>
               </tr>
               {{/each}}
             </tbody>
           </table>
         </div>
+        <!--
+        <nav aria-label="Page navigation example" style="padding-right: 40%;">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next" style="color: #4c489d;">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #4c489d;">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #4c489d;">2</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #4c489d;">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="/controllers/#" aria-label="Previous" style="color: #4c489d;">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        -->
       </main>
 
     </div>
   </div>
-
+  <script type="text/javascript" src="js/table2excel.js"></script>
   <script type="text/javascript">
     function printPage() {
       var body = document.getElementById('body').innerHTML;
@@ -164,11 +223,10 @@
       window.print();
     };
 
-    document.getElementById('downloadExcel').addEventListener('click', function () {
+    function tableToExcel() {
       var table2excel = new Table2Excel();
       table2excel.export(document.querySelectorAll("#tableExport"));
-    });
-
+    }
   </script>
 
 </body>

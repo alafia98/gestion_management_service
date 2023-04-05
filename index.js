@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
-const hbs = require('hbs');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
@@ -16,18 +15,14 @@ app.use(bodyParser.json());
 // serve static files: css, js, images
 app.use(express.static(path.join(__dirname, './public')));
 
+// routes
+app.use('/', require('./routes/adminRoute'));
+
 // template engine
+/*
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-const partialsPath = path.join(__dirname, './views/partials');
-hbs.registerPartials(partialsPath);
-
-
-// routes
-app.use('/', require('./routes/pages'));
-app.use('/', require('./routes/auth'));
-app.use('/', require('./routes/data'));
-
+*/
 // errors: page not found 404;
 app.use((req, res, next) => {
     var err = new Error("Page not found");
@@ -43,7 +38,7 @@ app.use((err, req, nex) => {
 
 // setting up the server
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+    console.log(`Server is running on port:${port}`);
 });
 
 module.exports = app;

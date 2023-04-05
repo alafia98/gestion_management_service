@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Management System</title>
+    <title>Page d'authentification</title>
 </head>
 
 
@@ -17,7 +17,7 @@
         <div class="screen">
             <div class="screen__content">
                 
-                <form class="login" method="post" action="/login">
+                <form class="login" method="post" action="">
                     {{#if message}}
                     <p class="alert alert-danger">{{message}}</p>
                     {{/if }}
@@ -30,7 +30,7 @@
                                 d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
                         </svg>
                         <input type="email" class="login__input" name="email" id="email" autocomplete="off" required
-                            placeholder="البريد الالكتروني" />
+                            placeholder="Email" />
                     </div>
                     <div class="login__field">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
@@ -39,14 +39,14 @@
                                 d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                         </svg>
                         <input type="password" name="password" id="password" autocomplete="off" required
-                            class="login__input" placeholder="كلمة السر" />
+                            class="login__input" placeholder="Mot de passe" />
 
                     </div>
                     <div class="login__field">
-                        <a href="/forgetPassword">نسيت كلمة السر</a>
+                        <a href="/forgetPassword">Mot de passe oublié</a>
                     </div>
                     <button class="button login__submit" type="submit">
-                        <span class="button__text">تسجيل الدخول</span>
+                        <span class="button__text">Se Connecter</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             class="bi bi-box-arrow-in-left button__icon fas fa-chevron-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -56,7 +56,7 @@
                         </svg>
                     </button>
                     <a href="/register" class="button login__submit">
-                        <span class="button__text">عضو جديد</span>
+                        <span class="button__text">S'inscrire</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             class="bi bi-person-add button__icon fas fa-chevron-right" viewBox="0 0 16 16">
                             <path

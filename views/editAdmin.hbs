@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Raleway, sans-serif;
+        }
+
+        .body {
+            background: linear-gradient(90deg, #c7c5f4, #776bcc);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .screen {
+            background: linear-gradient(90deg, #5d54a4, #7c78b8);
+            position: relative;
+            height: 600px;
+            width: 360px;
+            box-shadow: 0px 0px 24px #5c5696;
+        }
+
+        .screen__content {
+            z-index: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        .screen__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+        }
+
+        .screen__background__shape {
+            transform: rotate(45deg);
+            position: absolute;
+        }
+
+        .screen__background__shape1 {
+            height: 520px;
+            width: 520px;
+            background: #fff;
+            top: -50px;
+            right: 120px;
+            border-radius: 0 72px 0 0;
+        }
+
+        .screen__background__shape2 {
+            height: 220px;
+            width: 220px;
+            background: #6c63ac;
+            top: -172px;
+            right: 0;
+            border-radius: 32px;
+        }
+
+        .screen__background__shape3 {
+            height: 540px;
+            width: 190px;
+            background: linear-gradient(270deg, #5d54a4, #6a679e);
+            top: -24px;
+            right: 0;
+            border-radius: 32px;
+        }
+
+        .screen__background__shape4 {
+            height: 400px;
+            width: 200px;
+            background: #7e7bb9;
+            top: 420px;
+            right: 50px;
+            border-radius: 60px;
+        }
+
+        .login {
+            width: 320px;
+            padding: 30px;
+            padding-top: 80px;
+        }
+
+        .login__field {
+            padding: 20px 0px;
+            position: relative;
+        }
+
+        .login__icon {
+            position: absolute;
+            top: 30px;
+            color: #7875b5;
+        }
+
+        .login__input {
+            border: none;
+            border-bottom: 2px solid #d1d1d4;
+            background: none;
+            padding: 10px;
+            padding-left: 24px;
+            font-weight: 700;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .login__input:active,
+        .login__input:focus,
+        .login__input:hover {
+            outline: none;
+            border-bottom-color: #6a679e;
+        }
+
+        .login__submit {
+            background: #fff;
+            font-size: 14px;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border-radius: 26px;
+            border: 1px solid #d4d3e8;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: #4c489d;
+            box-shadow: 0px 2px 2px #5c5696;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .login__submit:active,
+        .login__submit:focus,
+        .login__submit:hover {
+            border-color: #6a679e;
+            outline: none;
+        }
+
+        .button__icon {
+            font-size: 24px;
+            margin-left: auto;
+            color: #7875b5;
+        }
+
+        /* Home */
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #4c489d;
+            padding: 10px;
+        }
+
+        .header .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .nav_link {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: -15px;
+            width: 80%;
+        }
+
+        .navlink {
+            width: 130px;
+        }
+
+        .nav-item {
+            margin-top: 0px;
+        }
+
+        .icon {
+            margin-right: 5px
+        }
+
+        .table {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .table thead {
+            background-color: #4c489d;
+            color: white;
+        }
+
+        .main {
+            padding: 30px;
+        }
+
+        .main .main_card {
+            position: absolute;
+        }
+
+        .main .card-body {
+            padding: 30px;
+        }
+
+        .main .card-body .row label,
+        .main .card-body .row label {
+            font-size: 20px;
+
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button .navlink {
+            font-size: 20px;
+            ;
+        }
+
+        .row nav {
+            background-color: #d3d2ef;
+        }
+    </style>
+    <title>Modifier un utilisateur</title>
+</head>
+
+<body>
+
+    <header id="sidebarMenu" class="header">
+        <a class="navbar-brand" href="/home" novalidate>Matériel Informatique</a>
+        <ul class="nav nav_link">
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/home">Principale</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/service">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/user">Postes</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" href="/needs">Besoins</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" href="/settings">Paramètres</a>
+            </li>
+        </ul>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/editAdminAr" style="color: white;"><h5>Ar</h5></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="card main_card" style="width: 60%; right: 20%;">
+            {{#if message}}
+            <p class="alert alert-danger">{{message}}</p>
+            {{/if}}
+            <div class="card-header" style="text-align: center; color: #5d54a4;">
+                <h3>Modifier un Utilisateur</h3>
+            </div>
+            <div class="card-body">
+                {{#each rows}}
+                <form method="post" action="">
+                    <div class="row">
+                        <div class="login__field">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-person-fill login__icon fas fa-user" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                            </svg>
+                            <input type="text" class="login__input" name="full_name" id="full_name" autocomplete="off"
+                                required placeholder="    Nom et Prénom" value="{{this.full_name}}"/>
+                        </div>
+                        <div class="login__field">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-envelope-at-fill login__icon fas fa-user" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z" />
+                                <path
+                                    d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
+                            </svg>
+                            <input type="email" class="login__input" name="email" id="email" autocomplete="off" required
+                                placeholder="    Email" value="{{this.email}}"/>
+                        </div>
+                        <div class="login__field">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                                class="bi bi-key-fill login__icon fas fa-lock" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <input type="password" name="password" id="password" autocomplete="off" required
+                                class="login__input" placeholder="    Mot de Passe" value="{{this.password}}"/>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <div class="mb-3">
+                            <input type="submit" class="login__submit navlink" aria-current="page" value="Confirmer" />
+                        </div>
+                        <div class="mb-3">
+                            <a class="login__submit navlink" aria-current="page" href="/settings">Retour</a>
+                        </div>
+                    </div>
+
+                </form>
+                {{/each}}
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

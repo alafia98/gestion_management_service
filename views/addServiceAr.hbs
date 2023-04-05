@@ -8,17 +8,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Management System</title>
+    <title>إضافة مصلحة</title>
 </head>
 
 
 <body>
 
     <header id="sidebarMenu" class="header">
-        <a class="navbar-brand" href="/home" novalidate>إدارة العتاد المعلوماتي</a>
+        <a class="navbar-brand" href="/homeAr" novalidate>إدارة العتاد المعلوماتي</a>
         <ul class="nav nav_link">
             <li class="nav-item">
-                <a class="login__submit navlink" aria-current="page" href="/home">
+                <a class="login__submit navlink" aria-current="page" href="/homeAr">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-house-door icon" viewBox="0 0 16 16">
                         <path
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="login__submit navlink" aria-current="page" href="/departement">
+                <a class="login__submit navlink" aria-current="page" href="/serviceAr">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-menu-app icon" viewBox="0 0 16 16">
                         <path
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="login__submit navlink" aria-current="page" href="/user">
+                <a class="login__submit navlink" aria-current="page" href="/userAr">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-people icon" viewBox="0 0 16 16">
                         <path
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="login__submit navlink" href="/needs">
+                <a class="login__submit navlink" href="/needsAr">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-cart4 icon" viewBox="0 0 16 16">
                         <path
@@ -57,9 +57,8 @@
                     الاحتياجات
                 </a>
             </li>
-            <!--
             <li class="nav-item">
-                <a class="login__submit navlink" href="/settings">
+                <a class="login__submit navlink" href="/settingsAr">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-gear icon" viewBox="0 0 16 16">
                         <path
@@ -70,11 +69,10 @@
                     الإعدادات
                 </a>
             </li>
-            -->
         </ul>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="/" style="color: white;">تسجيل الخروج</a>
+                <a class="nav-link px-3" href="/addService" style="color: white;"><h5>Fr</h5></a>
             </div>
         </div>
     </header>
@@ -88,12 +86,12 @@
                 <h3>إدخال البيانات</h3>
             </div>
             <div class="card-body">
-                <form method="post" action="/addDepartement">
+                <form method="post" action="">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="departement">المصلحة</label>
-                                <input type="text" name="departement" id="departement" class="form-control" />
+                                <label for="service">المصلحة</label>
+                                <input type="text" name="service" id="service" class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -132,7 +130,7 @@
                             <input type="submit" class="login__submit navlink" aria-current="page" value="تأكيد" />
                         </div>
                         <div class="mb-3">
-                            <a class="login__submit navlink" aria-current="page" href="/home">رجوع</a>
+                            <a class="login__submit navlink" aria-current="page" href="/homeAr">رجوع</a>
                         </div>
                     </div>
 

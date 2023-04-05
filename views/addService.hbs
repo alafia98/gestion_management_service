@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ajouter les données</title>
+</head>
+
+<body>
+
+    <header id="sidebarMenu" class="header">
+        <a class="navbar-brand" href="/home" novalidate>Matériel Informatique</a>
+        <ul class="nav nav_link">
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/home">Principale</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/service">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" aria-current="page" href="/user">Postes</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" href="/needs">Besoins</a>
+            </li>
+            <li class="nav-item">
+                <a class="login__submit navlink" href="/settings">Paramètres</a>
+            </li>
+        </ul>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/addServiceAr" style="color: white;"><h5>Ar</h5></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        {{#if message}}
+        <p class="alert alert-success">{{message}}</p>
+        {{/if}}
+        <div class="card">
+            <div class="card-header" style="text-align: center; color: #5d54a4;">
+                <h3>Ajouter les données</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" action="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="service">Services</label>
+                                <input type="text" name="service" id="service" class="form-control" placeholder="Saisir le nom du service"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="user">Poste</label>
+                                <input type="text" name="user" id="user" class="form-control" placeholder="Saisir le nom complet d'utilisateur de ce poste"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="materiel">Matériel</label>
+                                <input type="text" name="materiel" id="materiel" class="form-control" placeholder="Saisir le nom du matériel informatique"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="desc_materiel">Propriétés du matériel</label>
+                                <input type="text" name="desc_materiel" id="desc_materiel" class="form-control" placeholder="Saisir les propriétés du matériel"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="address_ip">Addresse IP</label>
+                                <input type="text" name="address_ip" id="address_ip" class="form-control" placeholder="Saisir l'addresse IP du matériel"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="needs">Besoins</label>
+                                <textarea type="text" name="needs" id="needs" class="form-control" placeholder="Saisir les besoins de ce poste"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <div class="mb-3">
+                            <input type="submit" class="login__submit navlink" aria-current="page" value="Confirmer" />
+                        </div>
+                        <div class="mb-3">
+                            <a class="login__submit navlink" aria-current="page" href="/home">Retour</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
